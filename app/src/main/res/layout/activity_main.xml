@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/padding_10"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+            android:id="@+id/ms_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:ms_entries="@array/type_name" />
+
+        <View style="@style/verticalDivider" />
+
+        <com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner
+            android:id="@+id/ms_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding_1"
+        android:layout_marginVertical="@dimen/padding_20"
+        app:dividerColor="@color/secondary" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/percentage_home" />
+            <EditText
+                android:id="@+id/et_home"
+                style="@style/editCommon"
+                android:inputType="numberDecimal"
+                android:layout_marginTop="@dimen/padding_5"
+                android:maxLength="2"/>
+        </LinearLayout>
+        <View style="@style/verticalDivider" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/percentage_other" />
+            <EditText
+                android:id="@+id/et_other"
+                style="@style/editCommon"
+                android:inputType="numberDecimal"
+                android:layout_marginTop="@dimen/padding_5"
+                android:maxLength="2"/>
+
+        </LinearLayout>
+        <View style="@style/verticalDivider" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/percentage_product" />
+            <EditText
+                android:id="@+id/et_product"
+                style="@style/editCommon"
+                android:inputType="numberDecimal"
+                android:layout_marginTop="@dimen/padding_5"
+                android:maxLength="2"/>
+        </LinearLayout>
+    </LinearLayout>
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding_1"
+        android:layout_marginVertical="@dimen/padding_20"
+        app:dividerColor="@color/secondary" />
+    <LinearLayout
+        android:id="@+id/linMatch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"></LinearLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/padding_1"
+        android:layout_marginVertical="@dimen/padding_20"
+        app:dividerColor="@color/secondary" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="@dimen/padding_60"
+                android:layout_height="wrap_content"
+                android:text="预算"
+                />
+            <EditText
+                android:id="@+id/et_budget"
+                style="@style/editCommon.min"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|right">
+                <TextView
+                    android:layout_width="@dimen/padding_60"
+                    android:layout_height="wrap_content"
+                    android:text="订单数"
+                    />
+                <EditText
+                    android:id="@+id/et_number_of_orders"
+                    style="@style/editCommon.min"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/padding_10">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="@dimen/padding_60"
+                android:layout_height="wrap_content"
+                android:text="曝光量"
+                />
+            <EditText
+                android:id="@+id/et_impressions"
+                style="@style/editCommon.min"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|right">
+                <TextView
+                    android:layout_width="@dimen/padding_60"
+                    android:layout_height="wrap_content"
+                    android:text="支出"
+                    />
+                <EditText
+                    android:id="@+id/et_expenditure"
+                    style="@style/editCommon.min"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/padding_10">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="@dimen/padding_60"
+                android:layout_height="wrap_content"
+                android:text="点击量"
+                />
+            <EditText
+                android:id="@+id/et_number_of_clicks"
+                style="@style/editCommon.min"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|right">
+                <TextView
+                    android:layout_width="@dimen/padding_60"
+                    android:layout_height="wrap_content"
+                    android:text="销量额"
+                    />
+                <EditText
+                    android:id="@+id/et_sales_revenue"
+                    style="@style/editCommon.min"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:layout_marginBottom="@dimen/padding_20"
+        >
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_save"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_40"
+            android:layout_weight="1"
+            app:rb_backgroundColor="@color/save"
+            app:rb_radius="@dimen/padding_20"
+            android:text="保存"/>
+        <View
+            style="@style/verticalDivider"/>
+        <com.xuexiang.xui.widget.button.roundbutton.RoundButton
+            android:id="@+id/btn_export"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/padding_40"
+            android:layout_weight="1"
+            app:rb_backgroundColor="@color/export"
+            app:rb_radius="@dimen/padding_20"
+            android:text="导出"/>
+    </LinearLayout>
+</LinearLayout>

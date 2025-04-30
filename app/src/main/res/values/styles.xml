@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="editCommon">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_size_16</item>
+        <item name="android:background">@drawable/edit_shape</item>
+        <item name="android:padding">@dimen/padding_5</item>
+    </style>
+    <style name="editCommon.min">
+        <item name="android:layout_width">@dimen/padding_70</item>
+        <item name="android:layout_marginHorizontal">@dimen/padding_5</item>
+        <item name="android:inputType">numberDecimal</item>
+        <item name="android:maxLength">4</item>
+    </style>
+    <style name="verticalDivider">
+        <item name="android:layout_width">@dimen/padding_10</item>
+        <item name="android:layout_height">@dimen/padding_1</item>
+    </style>
+
+
+    <style name="FullScreenDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+    </style>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="type_name">
+        <item>固定或仅降低策略</item>
+        <item>上升和降低策略</item>
+    </string-array>
+    <string-array name="type_value">
+        <item>0,0,0</item>
+        <item>1,0.5,0.5</item>
+    </string-array>
+</resources>

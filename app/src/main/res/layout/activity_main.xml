@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            app:ms_entries="@array/type_name" />
+            app:ms_entries="@array/type_name"
+            android:textSize="@dimen/text_size_15"/>
 
         <View style="@style/verticalDivider" />
 
@@ -27,7 +28,8 @@
             android:id="@+id/ms_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:textSize="@dimen/text_size_16"/>
     </LinearLayout>
 
     <com.google.android.material.divider.MaterialDivider
@@ -47,16 +49,18 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/text_label"
+                android:gravity="center"
                 android:text="@string/percentage_home" />
+
             <EditText
                 android:id="@+id/et_home"
                 style="@style/editCommon"
                 android:inputType="numberDecimal"
                 android:layout_marginTop="@dimen/padding_5"
-                android:maxLength="2"/>
+                android:maxLength="3"/>
         </LinearLayout>
         <View style="@style/verticalDivider" />
         <LinearLayout
@@ -66,15 +70,15 @@
             android:gravity="center"
             android:orientation="vertical">
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/text_label"
+                android:gravity="center"
                 android:text="@string/percentage_other" />
             <EditText
                 android:id="@+id/et_other"
                 style="@style/editCommon"
                 android:inputType="numberDecimal"
                 android:layout_marginTop="@dimen/padding_5"
-                android:maxLength="2"/>
+                android:maxLength="3"/>
 
         </LinearLayout>
         <View style="@style/verticalDivider" />
@@ -84,16 +88,17 @@
             android:layout_weight="1"
             android:gravity="center"
             android:orientation="vertical">
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/text_label"
+                android:gravity="center"
                 android:text="@string/percentage_product" />
             <EditText
                 android:id="@+id/et_product"
                 style="@style/editCommon"
                 android:inputType="numberDecimal"
                 android:layout_marginTop="@dimen/padding_5"
-                android:maxLength="2"/>
+                android:maxLength="3"/>
         </LinearLayout>
     </LinearLayout>
     <com.google.android.material.divider.MaterialDivider
@@ -122,8 +127,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="@dimen/padding_60"
-                android:layout_height="wrap_content"
+                style="@style/text_label.com"
                 android:text="预算"
                 />
             <EditText
@@ -136,8 +140,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical|right">
                 <TextView
-                    android:layout_width="@dimen/padding_60"
-                    android:layout_height="wrap_content"
+                    style="@style/text_label.com"
                     android:text="订单数"
                     />
                 <EditText
@@ -157,8 +160,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="@dimen/padding_60"
-                android:layout_height="wrap_content"
+                style="@style/text_label.com"
                 android:text="曝光量"
                 />
             <EditText
@@ -171,8 +173,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical|right">
                 <TextView
-                    android:layout_width="@dimen/padding_60"
-                    android:layout_height="wrap_content"
+                    style="@style/text_label.com"
                     android:text="支出"
                     />
                 <EditText
@@ -192,8 +193,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="@dimen/padding_60"
-                android:layout_height="wrap_content"
+                style="@style/text_label.com"
                 android:text="点击量"
                 />
             <EditText
@@ -206,8 +206,7 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical|right">
                 <TextView
-                    android:layout_width="@dimen/padding_60"
-                    android:layout_height="wrap_content"
+                    style="@style/text_label.com"
                     android:text="销量额"
                     />
                 <EditText
@@ -231,7 +230,8 @@
             android:layout_weight="1"
             app:rb_backgroundColor="@color/save"
             app:rb_radius="@dimen/padding_20"
-            android:text="保存"/>
+            android:text="保存"
+            android:textSize="@dimen/text_size_18"/>
         <View
             style="@style/verticalDivider"/>
         <com.xuexiang.xui.widget.button.roundbutton.RoundButton
@@ -241,6 +241,7 @@
             android:layout_weight="1"
             app:rb_backgroundColor="@color/export"
             app:rb_radius="@dimen/padding_20"
-            android:text="导出"/>
+            android:text="导出"
+            android:textSize="@dimen/text_size_18"/>
     </LinearLayout>
 </LinearLayout>

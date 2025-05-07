@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">BiddingCalculator</string>
     <string name="percentage_home">首页首位(%)</string>
-    <string name="percentage_other">雒其余位置(%)</string>
+    <string name="percentage_other">其余位置(%)</string>
     <string name="percentage_product">商品页(%)</string>
     <string name="match_exact">紧密匹配</string>
     <string name="match_broad">宽泛匹配</string>

@@ -278,7 +278,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements E
                 loadingDialog = new LoadingDialog(MainActivity.this);
             }
             loadingDialog.show();
-            FileUtils.exportHistory(new DBUtils.DBOptionCallback() {
+            FileUtils.exportHistory(MainActivity.this, new DBUtils.DBOptionCallback() {
                 @Override
                 public void success(Object o) {
                     loadingDialog.dismiss();

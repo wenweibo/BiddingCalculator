@@ -7,8 +7,8 @@
     android:gravity="center_vertical">
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="@dimen/padding_60"
-        android:layout_height="wrap_content"
+        style="@style/text_label.com"
+        android:layout_width="@dimen/padding_80"
         />
     <EditText
         android:id="@+id/et_amount"
@@ -24,16 +24,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textSize="@dimen/text_size_16"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textSize="@dimen/text_size_16"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textSize="@dimen/text_size_16"/>
     </LinearLayout>
 </LinearLayout>

@@ -330,6 +330,7 @@ public class FileUtils {
         // 表头第1行
         int col = 0;
         headerRow1.createCell(col++).setCellValue( "日期");
+        headerRow1.createCell(col++).setCellValue( "类型");
 //        sheet.addMergedRegion(new CellRangeAddress(0, 1, col, col++)); // ID
 
         headerRow1.createCell(col++).setCellValue("首页首位");
@@ -353,7 +354,7 @@ public class FileUtils {
         }
 
         // 剩余字段
-        String[] others = {"预算", "订单数", "曝光数", "支出", "点击数", "销售额", "类型"};
+        String[] others = {"预算", "订单数", "曝光数", "支出", "点击数", "销售额"};
         for (String s : others) {
             headerRow1.createCell(col++).setCellValue(s);
 //            sheet.addMergedRegion(new CellRangeAddress(0, 1, col, col++));
@@ -367,6 +368,8 @@ public class FileUtils {
 
             int c = 0;
             row1.createCell(c).setCellValue(entity.getCalculatorDate());
+            sheet.addMergedRegion(new CellRangeAddress(rowIndex-2, rowIndex-1, c, c++));
+            row1.createCell(c).setCellValue(entity.getType());
             sheet.addMergedRegion(new CellRangeAddress(rowIndex-2, rowIndex-1, c, c++));
             row1.createCell(c).setCellValue(entity.getPercentageHome() + "%");
             sheet.addMergedRegion(new CellRangeAddress(rowIndex-2, rowIndex-1, c, c++));
@@ -424,8 +427,7 @@ public class FileUtils {
             sheet.addMergedRegion(new CellRangeAddress(rowIndex-2, rowIndex-1, c, c++));
             row1.createCell(c).setCellValue(entity.getSalesRevenue());
             sheet.addMergedRegion(new CellRangeAddress(rowIndex-2, rowIndex-1, c, c++));
-            row1.createCell(c).setCellValue(entity.getType());
-            sheet.addMergedRegion(new CellRangeAddress(rowIndex-2, rowIndex-1, c, c++));
+
         }
 
         // 保存到本地（Android 10+）

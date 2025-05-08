@@ -2,6 +2,7 @@ package com.ertw.biddingcalculator.utils;
 
 import android.util.Log;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -28,6 +29,24 @@ public class DateUtils {
     public static String getCurrentDateByPattern(String pattern){
         SimpleDateFormat format = new SimpleDateFormat(pattern);
         return format.format(new Date());
+    }
+
+    /**
+     * 日期比较
+     * @param dateStr1 "yyyy/MM/dd"
+     * @param dateStr2 "yyyy/MM/dd"
+     * @return
+     */
+    public static boolean dateComparison(String dateStr1, String dateStr2){
+        boolean result = false;
+        try {
+            Date date1 = simpleDateFormat.parse(dateStr1);
+            Date date2 = simpleDateFormat.parse(dateStr2);
+            result = date2.getTime() >= date1.getTime();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     /**

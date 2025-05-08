@@ -62,9 +62,9 @@ public class FileUtils {
      *
      * @param dbOptionCallback
      */
-    public static void exportHistory(Context context, DBUtils.DBOptionCallback dbOptionCallback) {
+    public static void exportHistory(Context context, String dateStart, String dateEnd, DBUtils.DBOptionCallback dbOptionCallback) {
         new Thread(() -> {
-            List<CalculatorEntity> calculatorEntities = MyApplication.appDatabase.calculatorEntityDao().queryAll();
+            List<CalculatorEntity> calculatorEntities = MyApplication.appDatabase.calculatorEntityDao().queryAllByDate(dateStart, dateEnd);
             if (calculatorEntities == null || calculatorEntities.isEmpty()) {
                 dbOptionCallback.success("抱歉，无可导出的数据");
             } else {

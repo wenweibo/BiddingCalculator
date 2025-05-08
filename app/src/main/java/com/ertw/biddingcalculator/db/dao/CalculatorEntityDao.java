@@ -26,5 +26,8 @@ public interface CalculatorEntityDao {
 
     @Query("SELECT * FROM CalculatorEntity ORDER BY calculatorDate DESC")
     List<CalculatorEntity> queryAll();
+
+    @Query("SELECT * FROM CalculatorEntity WHERE calculatorDate >= :dateStart AND calculatorDate<= :dateEnd ORDER BY calculatorDate DESC")
+    List<CalculatorEntity> queryAllByDate(String dateStart, String dateEnd);
 }
 

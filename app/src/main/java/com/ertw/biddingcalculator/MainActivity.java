@@ -26,16 +26,21 @@ import com.ertw.biddingcalculator.utils.FileUtils;
 import com.ertw.biddingcalculator.weight.LoadingDialog;
 import com.xuexiang.xui.utils.XToastUtils;
 import com.xuexiang.xui.widget.dialog.materialdialog.MaterialDialog;
+import com.xuexiang.xui.widget.picker.widget.OptionsPickerView;
+import com.xuexiang.xui.widget.picker.widget.builder.OptionsPickerBuilder;
+import com.xuexiang.xui.widget.picker.widget.listener.OnOptionsSelectListener;
 import com.xuexiang.xui.widget.spinner.materialspinner.MaterialSpinner;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-public class MainActivity extends BaseActivity<ActivityMainBinding> implements EasyPermissions.PermissionCallbacks{
+public class MainActivity extends BaseActivity<ActivityMainBinding> implements EasyPermissions.PermissionCallbacks {
     private static final int REQUEST_CODE_QRCODE_PERMISSIONS = 1;
     private List<String> dates;
     private List<MatchEntity> matchEntities = new ArrayList<>();
@@ -118,7 +123,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements E
     private Handler exportHandler = new Handler(msg -> {
         MaterialDialog.Builder builder = new MaterialDialog.Builder(MainActivity.this)
                 .title("通知")
-                .content((String ) msg.obj)
+                .content((String) msg.obj)
                 .positiveText("OK");
         builder.show();
         return false;
@@ -274,27 +279,42 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements E
         });
 
         binding.btnExport.setOnClickListener(v -> {
-            if (loadingDialog == null) {
-                loadingDialog = new LoadingDialog(MainActivity.this);
-            }
-            loadingDialog.show();
-            FileUtils.exportHistory(MainActivity.this, new DBUtils.DBOptionCallback() {
-                @Override
-                public void success(Object o) {
-                    loadingDialog.dismiss();
-                    Message message = Message.obtain();
-                    message.obj = o;
-                    exportHandler.sendMessage(message);
-                }
+            OptionsPickerView optionsPickerView = new OptionsPickerBuilder(MainActivity.this, (view, options1, options2, options3) -> {
+                if (!DateUtils.dateComparison(dates.get(options1), dates.get(options2))) {
+                    XToastUtils.warning("结束日期要大于开始日期");
+                    return true;
+                } else {
+                    Log.d(TAG, dates.get(options1) + "~" + dates.get(options2));
+                    if (loadingDialog == null) {
+                        loadingDialog = new LoadingDialog(MainActivity.this);
+                    }
+                    loadingDialog.show();
+                    FileUtils.exportHistory(MainActivity.this, dates.get(options1), dates.get(options2), new DBUtils.DBOptionCallback() {
+                        @Override
+                        public void success(Object o) {
+                            loadingDialog.dismiss();
+                            Message message = Message.obtain();
+                            message.obj = o;
+                            exportHandler.sendMessage(message);
+                        }
 
-                @Override
-                public void fail() {
-                    loadingDialog.dismiss();
+                        @Override
+                        public void fail() {
+                            loadingDialog.dismiss();
+                        }
+                    });
+                    return false;
                 }
-            });
+            })
+                    .setTitleText("选择导出日期区间")
+                    .build();
+            optionsPickerView.setNPicker(dates, dates);
+            optionsPickerView.show();
+
         });
 
         binding.btnSave.setOnClickListener(v -> {
+
             if (loadingDialog == null) {
                 loadingDialog = new LoadingDialog(MainActivity.this);
             }
@@ -305,13 +325,12 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements E
             }
 
 
-
             calculatorEntity.setType(binding.msType.getSelectedItem());
             calculatorEntity.setCalculatorDate(binding.msDate.getSelectedItem());
             String percentageHome = binding.etHome.getText().toString();
             if (!percentageHome.isEmpty()) {
                 calculatorEntity.setPercentageHome(percentageHome);
-                if(calculatorEntity.getId() == -1){
+                if (calculatorEntity.getId() == -1) {
                     prefs.edit().putString(GlobalConstants.SP_KEY_PERCENTAGE_HOME, percentageHome).apply();
                 }
             }
@@ -319,7 +338,7 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements E
             String percentageOther = binding.etOther.getText().toString();
             if (!percentageOther.isEmpty()) {
                 calculatorEntity.setPercentageOther(percentageOther);
-                if(calculatorEntity.getId() == -1){
+                if (calculatorEntity.getId() == -1) {
                     prefs.edit().putString(GlobalConstants.SP_KEY_PERCENTAGE_OTHER, percentageOther).apply();
                 }
             }
@@ -327,11 +346,10 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements E
             String percentageProduct = binding.etProduct.getText().toString();
             if (!percentageProduct.isEmpty()) {
                 calculatorEntity.setPercentageProduct(percentageProduct);
-                if(calculatorEntity.getId() == -1){
+                if (calculatorEntity.getId() == -1) {
                     prefs.edit().putString(GlobalConstants.SP_KEY_PERCENTAGE_PRODUCT, percentageProduct).apply();
                 }
             }
-
 
 
             LinearLayout exactLin = (LinearLayout) binding.linMatch.getChildAt(0);
@@ -450,11 +468,13 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements E
                     "请给我权限", REQUEST_CODE_QRCODE_PERMISSIONS, perms);
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this);
     }
+
     @Override
     public void onPermissionsGranted(int requestCode, @NonNull List<String> perms) {
         MyApplication.logDir = FileUtils.createUniversalFolder(MainActivity.this, GlobalConstants.EXPORT_FOLDER);

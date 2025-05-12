@@ -330,25 +330,25 @@ public class MainActivity extends BaseActivity<ActivityMainBinding> implements E
             String percentageHome = binding.etHome.getText().toString();
             if (!percentageHome.isEmpty()) {
                 calculatorEntity.setPercentageHome(percentageHome);
-                if (calculatorEntity.getId() == -1) {
+//                if (calculatorEntity.getId() == -1) {
                     prefs.edit().putString(GlobalConstants.SP_KEY_PERCENTAGE_HOME, percentageHome).apply();
-                }
+//                }
             }
 
             String percentageOther = binding.etOther.getText().toString();
             if (!percentageOther.isEmpty()) {
                 calculatorEntity.setPercentageOther(percentageOther);
-                if (calculatorEntity.getId() == -1) {
+//                if (calculatorEntity.getId() == -1) {
                     prefs.edit().putString(GlobalConstants.SP_KEY_PERCENTAGE_OTHER, percentageOther).apply();
-                }
+//                }
             }
 
             String percentageProduct = binding.etProduct.getText().toString();
             if (!percentageProduct.isEmpty()) {
                 calculatorEntity.setPercentageProduct(percentageProduct);
-                if (calculatorEntity.getId() == -1) {
+//                if (calculatorEntity.getId() == -1) {
                     prefs.edit().putString(GlobalConstants.SP_KEY_PERCENTAGE_PRODUCT, percentageProduct).apply();
-                }
+//                }
             }
 
 
